@@ -1,0 +1,26 @@
+@model CasaDeShow1.Models.Local;
+
+<div class="text-center">
+<h2>Cadastrar nova casa de Shows</h2>
+<br>
+</div>
+
+<form class="form-horizontal" asp-controller="Local" asp-action="Salvar" method="Post">
+    
+     
+    <div class="form-row">
+        <div class="form-group col-md-9">
+            <input type="hidden" asp-for="Id">
+            <label asp-for="Nome">Nome casa de shows</label>
+            <input class="form-control" asp-for="Nome" placeholder="Nome casa de Show" required>
+            <span asp-validation-for="Nome"></span>
+       </div>
+       <div class="form-group col-md-9">
+            <label asp-for="Endereco">Endereço casa de shows</label>
+            <input type="int" class="form-control" asp-for="Endereco" placeholder="Endereço" Required min="1">             
+       </div>      
+    </div>
+     <button class="btn btn-success">Cadastrar</button>
+</form>
+
+

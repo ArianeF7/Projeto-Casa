@@ -1,0 +1,51 @@
+@model CasaDeShow1.Models.Comprar
+
+ <div >
+    <H2 class="text-center">Finalizar Compra</H2>   
+    <hr>
+</div>
+
+  <div class="card mb-4 col-4 shadow-sm text-center mx-auto">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">@Model.Evento.Nome</h4>
+      </div>
+
+      <div class="card-body">
+        <h2 class="card-title pricing-card-title">@String.Format("R$ {0:0.00}", Model.Evento.preco).Replace(".", ",")</h2>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Ainda tem <b>@Model.Evento.Capacidade</b> Ingressos disponiveis</li>
+          <br>
+          <li>Data e hora do Evento <b>@String.Format(" {0:dd/MM/yyyy HH:mm}", Model.Evento.Data)</b></li>
+          <br>
+          <form asp-action="Salvar">
+            <div class="form-group">
+                <label asp-for="Quantidade">Insira Quantidade desejada:</label>                
+                <input class="form-control col-5 mx-auto" asp-for="Quantidade" placeholder="Quantidade"  min="1" value="1" max="@Model.Evento.Capacidade" > 
+                <span asp-validation-for="Quantidade"></span>                
+            </div>          
+          
+          @* <li>Valor total da compra </li>
+          <li>Help center access</li> *@
+          <input type="hidden" asp-for="Evento.Id" value="@Model.Evento.Id">
+          <input type="hidden" asp-for="IdentityUser.Id">
+
+          @* <input type="hidden" asp-for="Evento.Capacidade" value="@Model.Evento.Capacidade">
+          <input type="hidden" asp-for="Evento.Capacidade" value="@Model.Evento.Capacidade">
+          <input type="hidden" asp-for="Evento.categoria" value="@Model.Evento.categoria">
+          <input type="hidden" asp-for="Evento.Local" value="@Model.Evento.Local">
+          <input type="hidden" asp-for="Evento.Id" value="@Model.Evento.Id">
+          <input type="hidden" asp-for="Evento.categoria" value="@Model.Evento.categoria">
+          <input type="hidden" asp-for="Id" value="@Model.Id">
+          <input type="hidden" asp-for="TotalCompra" value="@Model.TotalCompra">
+          <input type="hidden" asp-for="Evento" value="@Model.Evento"> *@
+
+
+<div>
+          @* <a href="/Compra/Salvar/@Model.Id" class="btn btn-info">Confirmar Compra</a> *@
+     </div>   
+        <button type="submmit" class="btn btn-lg btn-outline-primary">Confirmar Compra</button> 
+        
+        </form>
+        </ul>
+      </div>
+    </div>

@@ -1,0 +1,39 @@
+@model IEnumerable<CasaDeShow1.Models.Evento>
+     
+    <div >
+    <H2 class="text-center">Todos os eventos</H2>    
+    <hr>
+    </div>
+    
+          
+    <table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Capacidade</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Local</th>
+            <th scope="col">Data do Evento</th>
+            <th scope="col">Ações</th>
+        </tr>
+  </thead>
+
+    @foreach (var evento in Model)
+    {    
+        <tbody>  
+            <tr>
+                <th scope="row">@evento.Id</th>
+                <td>@evento.Nome</td>
+                <td>@evento.Capacidade</td>    
+                <td>@String.Format("R$ {0:0.00}", evento.preco).Replace(".", ",")</td>
+                <td>@evento.categoria</td>
+                <td>@Html.DisplayFor(model => evento.Local.Nome)</td>
+                <td>@evento.Data</td>
+                <td><a href="/Compra/comprar/@evento.Id" class="btn btn-info">Comprar</a></td>
+                
+            </tr>
+        </tbody> 
+    }
+     </table>

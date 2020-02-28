@@ -1,0 +1,88 @@
+@model CasaDeShow1.Models.Evento;
+<body>
+<h2>Cadastrar novo Evento</h2>
+
+<form class="form-horizontal" asp-controller="Evento" asp-action="Salvar" method="Post" asp-validation-summary="ModelOnly" >
+    <input type="hidden" asp-for="Id">
+    <div class="form-row">
+        <div class="form-group col-md-9">
+            
+            <label asp-for="Nome" class="control-label"></label>
+            <input class="form-control" asp-for="Nome" placeholder="Nome" Required >
+            <span asp-validation-for="Nome"></span>
+       </div>
+       <div class="form-group col-md-3">
+            <label asp-for="Capacidade">Capacidade</label>
+            <input type="int" class="form-control" asp-for="Capacidade" placeholder="Capacidade"  min="1" Required> 
+            <span asp-validation-for="Capacidade"></span>
+       </div>
+    </div>
+     <div class="form-row">
+        <div class="form-group col-md-3">
+            <label asp-for="preco">Preço</label>
+            <input class="form-control" asp-for="preco" placeholder="Preço" Required step="0.01" type="number">
+            <span asp-validation-for="preco"></span> 
+       </div>
+       <div class="form-group col-md-5">
+            <label>Categoria</label>
+            <select class="form-control" asp-for="categoria" Required>
+                <option selected value="">Selecione Categoria</option>
+                <option>Axé</option>
+                <option>Blues</option>
+                <option>Country</option>
+                <option>Eletrônica</option>
+                <option>Forró</option>
+                <option>Funk</option>
+                <option>Gospel</option>
+                <option>Hip Hop</option>
+                <option>Jazz</option>
+                <option>MPB</option>
+                <option>Música clássica</option>
+                <option>Pagode</option>
+                <option>Pop</option>
+                <option>Rap</option>
+                <option>Reggae</option>
+                <option>Rock</option>
+                <option>Samba</option>
+                <option>Sertanejo</option>
+                <option>Outros</option>
+            </select>
+            <span asp-validation-for="categoria"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Data">Data e Hora</label>
+            <input class="form-control" asp-for="Data" placeholder="Data" Required>
+            <span asp-validation-for="Data"></span>
+       </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-10">
+            <label>Local</label>
+            <select class="form-control" asp-for="Local.Id" asp-items='@(new SelectList(@ViewBag.Local, "Id","Nome"))'Required>
+                <option selected value="">Selecione Local</option>
+            </select>
+            <span asp-validation-for="Local.Id"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <br>
+            <button class="btn btn-success" id="btnCadastEvent">Cadastrar</button>
+       </div>
+    </div>    
+  </div>    
+</form>
+
+@if(ViewBag.Message != null){
+        <script type = "text/javascript">
+            window.onload=function(){
+            alert("@ViewBag.Message");
+        }
+    </script>
+
+
+}
+</body>
+ 
+
+
+        
+    
